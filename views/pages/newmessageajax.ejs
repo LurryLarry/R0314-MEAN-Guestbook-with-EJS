@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/navbar') %>
+
+    <div id="main">
+        <%- include('../partials/header') %>
+
+        <div class="content">
+            <form id="form" class="pure-form pure-form-aligned">
+                <fieldset>
+                    <div class="pure-control-group">
+
+                        <input id="name" type="text" placeholder="Your name">
+                    </div>
+
+                    <div class="pure-control-group">
+
+                        <input id="country" type="text" placeholder="Your country">
+                    </div>
+
+                    <div id="message" class="pure-control-group">
+
+                        <input id="comment" type="text" placeholder="Message">
+
+                    </div>
+                </fieldset>
+                <button class="pure-button">Send</button>
+
+                <div id="table"></div>
+
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="javascript/ui.js"></script>
+    <script src="javascript/ajaxmessage.js"></script>
+</body>
+
+</html>
