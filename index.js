@@ -21,7 +21,7 @@ app.get("/", function (req, res) {
         header: {
 
             heading_h1: "Project 2",
-            heading_h2: "R0314-MEAN-Guestbook"
+            heading_h2: "R0314-MEAN-Guestbook-with-EJS"
 
         },
         title: {
