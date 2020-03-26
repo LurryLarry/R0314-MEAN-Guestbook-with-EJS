@@ -4,7 +4,7 @@ const fs = require("fs");
 const http = require("http");
 const bodyParser = require("body-parser");
 
-// const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -102,6 +102,6 @@ app.post("/update", function (req, res) {
 
 
 
-app.listen(8081, function () {
+app.listen(PORT, function () {
     console.log("Example app listening on port 8081!");
 });
