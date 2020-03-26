@@ -23,9 +23,14 @@ app.get("/", function (req, res) {
             heading_h1: "Project 2",
             heading_h2: "R0314-MEAN-Guestbook"
 
+        },
+        title: {
+            title_name: "Home"
         }
     });
 });
+
+let data = require(__dirname + "/public/api/data.json");
 
 app.get("/guestbook", function (req, res) {
     res.render('pages/guestbook.ejs', {
@@ -34,7 +39,11 @@ app.get("/guestbook", function (req, res) {
             heading_h1: "Guestbook",
             heading_h2: "Here you can view the entries"
 
-        }
+        },
+
+        title: {
+            title_name: "Guestbook"
+        }, data
     });
 });
 
@@ -45,28 +54,23 @@ app.get("/newmessage", function (req, res) {
             heading_h1: "Add Entry",
             heading_h2: "You are welcome to leave a message"
 
+        },
+
+        title: {
+            title_name: "Add Entry"
         }
     });
 });
 
-app.get("/newmessageajax", function (req, res) {
-    res.render('pages/newmessageajax.ejs', {
-        header: {
-
-            heading_h1: "Add Entry (AJAX)",
-            heading_h2: "You are welcome to leave a message"
-
-        }
-    });
-});
 
 app.get("*", function (req, res) {
     res.send("Cant find the requested page", 404);
 });
 
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-let data = require(__dirname + "/public/api/data.json");
 
 app.post("/update", function (req, res) {
     let date = new Date();
@@ -82,34 +86,7 @@ app.post("/update", function (req, res) {
 
     data.push(entry);
 
-    fs.writeFile(__dirname + "/public/api/data.json", JSON.stringify(data), function (err) {
-        if (err) {
-            console.log("An error occured while writing JSON Object to File.");
-            return console.log(err);
-        }
-        console.log("JSON file has been saved.");
-    });
-    res.sendFile(__dirname + '/public/guestbook.html');
-});
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.post('/update-with-ajax', function (req, res) {
-    console.log(req.body.name);
-
-    let date = new Date();
-    date = date.toUTCString();
-
-    let entry = {
-        "id": data.length + 1,
-        "username": req.body.name,
-        "country": req.body.country,
-        "date": date,
-        "message": req.body.message
-    };
-
-    data.push(entry);
+    console.log(data);
 
     fs.writeFile(__dirname + "/public/api/data.json", JSON.stringify(data), function (err) {
         if (err) {
@@ -118,9 +95,12 @@ app.post('/update-with-ajax', function (req, res) {
         }
         console.log("JSON file has been saved.");
     });
-    res.end();
-
+    console.log(data);
+    res.redirect('/guestbook'); // käytin redirectiä jotta sovellus käy hakemassa myös header tiedot
 });
+
+
+
 
 app.listen(8081, function () {
     console.log("Example app listening on port 8081!");

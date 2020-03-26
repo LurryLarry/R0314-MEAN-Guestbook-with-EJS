@@ -1,0 +1,25 @@
+<table align="center" class="pure-table pure-table-horizontal">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Message</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% console.log("käy table partialsissa"); %>
+    <% data.forEach(function(user) { %>
+    <tr>
+      <td style='font-weight: bold;'><%= user.id %></td>
+      <td><%= user.username %></td>
+      <td><%= user.country %></td>
+      <td><%= user.message %></td>
+      <td><%= user.date %></td>
+    </tr>
+
+    <% }); %>
+
+  </tbody>
+</table>

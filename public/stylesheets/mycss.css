@@ -40,6 +40,7 @@ table {
     color: black;
     border-collapse: collapse;
     margin: 50px auto;
+    margin-bottom: 150px;
 }
 
 
@@ -78,6 +79,14 @@ th {
     text-align: center;
     
 }
+
+footer {
+    width:100%;
+    position: fixed;
+    bottom: 0px;
+    background-color: #191818;
+    
+    }
 
 /* 
 Max width before this PARTICULAR table gets nasty
