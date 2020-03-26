@@ -96,7 +96,9 @@ and also iPads specifically.
 
 @media only screen and (max-width: 760px),
 (min-device-width: 768px) and (max-device-width: 1024px) {
-    
+    input#name, input#country, input#comment {
+        width: 250px;
+    }
     table {
         width: 100%;
     }
